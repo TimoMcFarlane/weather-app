@@ -14,8 +14,11 @@ export const fetchWeather = (city, scope) => {
     fetchBuilder(city, scope)
     .then(data => data.json())  
     .then(data => {
-        dispatch({type: SET_LOADING, payload: false})
+        if(data.cod == 404) {
+          throw new Error();
+        }
         dispatch({type: (scope == WEATHER ? FETCH_WEATHER_SUCCESS : FETCH_FORECAST_SUCCESS), payload: data});
+        dispatch({type: SET_LOADING, payload: false})
       }).catch(error => {
         dispatch({type: SET_LOADING, payload: false})
         dispatch({type: (scope == WEATHER ? FETCH_WEATHER_ERROR : FETCH_FORECAST_ERROR), payload:true});

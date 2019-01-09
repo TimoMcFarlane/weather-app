@@ -12,10 +12,10 @@ export const load = (key) => {
   return new Promise(fetchFromStorage);
 };
 
-export const save = (key, text) => {
+export const save = (key, value) => {
   saveToStorage = (resolve, reject) => {
     try {
-      AsyncStorage.setItem(`${key}`, text)
+      AsyncStorage.setItem(`${key}`, JSON.stringify(value))
       resolve("Item saved");
     } catch (error) {
       reject("An error occured while saving to storage..");

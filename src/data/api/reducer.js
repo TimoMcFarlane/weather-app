@@ -2,6 +2,8 @@ import { FETCH_WEATHER_SUCCESS, FETCH_WEATHER_ERROR, FETCH_FORECAST_SUCCESS, FET
 
 const INITIAL_STATE = {
   error: false,
+  forecast: {},
+  weather: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -9,7 +11,8 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_WEATHER_SUCCESS: 
       return {
         ...state,
-        weather: action.payload
+        weather: action.payload,
+        error: false
       };
     case FETCH_WEATHER_ERROR:
       return {
@@ -19,7 +22,8 @@ export default (state = INITIAL_STATE, action) => {
     case FETCH_FORECAST_SUCCESS:
       return {
         ...state,
-        forecast: action.payload
+        forecast: action.payload,
+        error: false
       }
     case FETCH_FORECAST_ERROR:
       return {

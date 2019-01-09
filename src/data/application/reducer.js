@@ -10,7 +10,6 @@ const INITIAL_STATE = {
     weatherActive: true,
     forecastActive: false,
     modalVisible:false,
-    locations: []
 }
 
 export default (state = INITIAL_STATE, action) => {
